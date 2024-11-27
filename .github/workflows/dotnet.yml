@@ -10,18 +10,6 @@ on:
     branches: [ "master" ]
 
 jobs: 
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '6.0'
-      - name: Run dotnet format
-        run: dotnet format --verify-no-changes -v d
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -34,3 +22,17 @@ jobs:
 
       - name: Run dotnet tests
         run: dotnet test
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0'
+      - name: Run dotnet format
+        run: dotnet format --verify-no-changes -v d
+
+
